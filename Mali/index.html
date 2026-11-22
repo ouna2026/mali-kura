@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALI KURA - L'Empire Manding</title>
+    <link rel="manifest" href="mnfest.json">
+    <meta name="theme-color" content="#0A2415">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" href="logo.png">
+    <style>
+        :root {
+            --or: #C9A227;
+            --or-clair: #F2D67C;
+            --vert: #0F3D22;
+            --vert-fonce: #0A2415;
+            --rouge: #8B1E1E;
+            --fond: #F7F1E3;
+            --carte: #FFFFFF
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: var(--fond);
+            color: #222;
+            line-height: 1.6
+        }
+
+        .bogolan {
+            height: 10px;
+            background: repeating-linear-gradient(45deg, #0F3D22 0 14px, #C9A227 14px 18px, #8B1E1E 18px 22px, #F7F1E3 22px 36px)
+        }
+
+        header {
+            background: var(--vert-fonce);
+            color: #fff;
+            text-align: center;
+            padding: 28px 16px 20px;
+            border-bottom: 3px solid var(--or)
+        }
+
+        .logo-header {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid var(--or);
+            background: #000;
+            padding: 4px;
+            margin: 0 auto 10px;
+            display: block
+        }
+
+        header .sur-titre {
+            font-family: Arial, sans-serif;
+            letter-spacing: 4px;
+            font-size: 11px;
+            color: var(--or-clair);
+            text-transform: uppercase
+        }
+
+        header h1 {
+            font-size: clamp(32px, 7vw, 52px);
+            letter-spacing: 6px;
+            margin: 8px 0 4px
+        }
+
+        header h1 span {
+            color: var(--or)
+        }
+
+        header .sous-titre {
+            font-style: italic;
+            color: #D9D9D9;
+            font-size: 15px
+        }
+
+        .drapeau {
+            display: flex;
+            height: 5px;
+            max-width: 720px;
+            margin: 16px auto 0;
+            border-radius: 99px;
+            overflow: hidden
+        }
+
+        .drapeau div {
+            flex: 1
+        }
+
+        .v {
+            background: #14B53A
+        }
+
+        .j {
+            background: #FCD116
+        }
+
+        .r {
+            background: #CE1126
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 18px 14px 60px
+        }
+
+        .card {
+            background: var(--carte);
+            border: 1px solid #E8DDC0;
+            border-top: 4px solid var(--or);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .07)
+        }
+
+        .hero-img {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block
+        }
+
+        .kicker {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rouge);
+            font-weight: 700;
+            margin: 14px 0 6px
+        }
+
+        h2 {
+            font-size: 26px;
+            line-height: 1.2;
+            color: var(--vert-fonce);
+            margin-bottom: 8px
+        }
+
+        h3 {
+            font-size: 19px;
+            color: var(--vert-fonce);
+            margin-bottom: 8px
+        }
+
+        p {
+            font-size: 16.5px;
+            color: #333
+        }
+
+        .encadre {
+            background: #0F3D22;
+            color: #F7F1E3;
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 14px
+        }
+
+        .encadre strong {
+            color: var(--or-clair)
+        }
+
+        .encadre ul {
+            margin: 10px 0 0 18px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px
+        }
+
+        @media(max-width:560px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            main {
+                padding: 12px 10px 50px
+            }
+
+            .card {
+                padding: 16px
+            }
+        }
+
+        button {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            padding: 15px 14px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        button:active {
+            transform: scale(.98)
+        }
+
+        .btn-or {
+            background: var(--or);
+            color: #1A1A1A
+        }
+
+        .btn-vert {
+            background: var(--vert);
+            color: #fff
+        }
+
+        .btn-rouge {
+            background: var(--rouge);
+            color: #fff
+        }
+
+        .btn-blanc {
+            background: #fff;
+            color: #0F3D22;
+            border-color: #C9A227
+        }
+
+        .btn-noir {
+            background: #121212;
+            color: #fff
+        }
+
+        .btn-griot {
+            background: var(--vert-fonce);
+            color: var(--or-clair);
+            font-size: 17px;
+            padding: 16px;
+            border: 1px solid var(--or)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        #conteTexte {
+            background: #FFFDF5;
+            border: 1px solid #E8DDC0;
+            padding: 18px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            line-height: 1.9;
+            font-size: 16.5px;
+            max-height: 380px;
+            overflow-y: auto;
+            margin: 12px 0
+        }
+
+        .progress {
+            background: var(--vert-fonce);
+            color: var(--or-clair);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px
+        }
+
+        #answers button {
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: 600
+        }
+
+        .correct {
+            background: #0F3D22 !important;
+            color: #fff !important
+        }
+
+        .wrong {
+            background: #8B1E1E !important;
+            color: #fff !important
+        }
+
+        #explication {
+            background: #FFF3CD;
+            border: 1px solid #E8DDC0;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            color: #222
+        }
+
+        .score-line {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin-top: 10px
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 12px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #E8DDC0;
+            background: #fff
+        }
+
+        footer strong {
+            color: var(--vert-fonce);
+            letter-spacing: 2px
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin: 14px 0
+        }
+
+        .tabs button {
+            padding: 12px;
+            font-size: 14px
+        }
+
+        .tabs button.active {
+            background: var(--vert-fonce);
+            color: var(--or-clair)
+        }
+
+        .couplets {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 14px
+        }
+
+        .couplets button {
+            padding: 11px 6px;
+            font-size: 13px
+        }
+
+        .couplets button.active {
+            background: var(--or);
+            color: #000
+        }
+
+        .hymne-box {
+            background: #FFFDF5;
+            border: 1px solid #E8DDC0;
+            border-radius: 10px;
+            padding: 18px;
+            white-space: pre-wrap;
+            line-height: 1.9;
+            font-size: 17px;
+            min-height: 260px
+        }
+
+        .hymne-auteur {
+            font-size: 13px;
+            font-family: Arial, sans-serif;
+            color: #666;
+            margin-top: 10px;
+            text-align: center
+        }
+
+        #updateBar {
+            background: #FCD116;
+            color: #000;
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: none
+        }
+
+        #updateBar p {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 10px
+        }
+
+        #updateBar button {
+            background: #0A2415;
+            color: #F2D67C
+        }
+
+        #updateLater {
+            background: #fff !important;
+            color: #333 !important;
+            margin-top: 8px;
+            border: 1px solid #ccc !important
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bogolan"></div>
+    <header>
+        <img src="logo.png" class="logo-header" alt="Logo Mali Kura">
+        <div class="sur-titre">Royaume du Mande - Empire Manding</div>
+        <h1>MALI <span>KURA</span></h1>
+        <div class="sous-titre">L'Empire qui a dit que l'homme est libre avant les autres</div>
+        <div class="drapeau">
+            <div class="v"></div>
+            <div class="j"></div>
+            <div class="r"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- BARRE DE MISE A JOUR - APPARAIT SEULEMENT SI TU AS MODIFIE version.json -->
+        <div id="updateBar">
+            <p id="updateText">Nouvelle version disponible</p>
+            <button onclick="faireMiseAJour()">Mettre à jour maintenant</button>
+            <button id="updateLater" onclick="cacherUpdate()">Plus tard</button>
+        </div>
+
+        <div id="home">
+            <div class="card">
+                <img src="griot.jpg" class="hero-img" alt="Griot du Mali">
+                <div class="kicker">Empire du Mande - 1235 a nos jours</div>
+                <h2>Bienvenue dans l'Empire, mon enfant.</h2>
+                <p>Le Mali n'etait pas un petit pays. C'etait <strong>un empire</strong>. Le plus riche du monde. Le
+                    plus savant du monde. Le premier a dire que l'homme est libre.</p>
+                <div class="encadre">
+                    <strong>Le Mali, c'etait :</strong>
+                    <ul>
+                        <li>L'or de Kankou Moussa</li>
+                        <li>Le savoir de Tombouctou</li>
+                        <li>La liberte de Soundjata Keita</li>
+                        <li>La force des FAMa aujourd'hui</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="kicker">Conte du Griot</div>
+                <h3>Le Lion et le Sorcier</h3>
+                <p>Ecoute l'histoire comme au village, sous le baobab. Version manding authentique.</p><br>
+                <button class="btn-griot" onclick="ouvrirConte()">Ecouter : Le Lion et le Sorcier</button>
+            </div>
+            <div class="card">
+                <div class="kicker">Hymne National - Le Mali</div>
+                <h3>Pour l'Afrique et pour toi, Mali</h3>
+                <p>Les 4 couplets complets. En francais et en bambara. Paroles de Seydou Badian Kouyate, musique de
+                    Banzumana Sissoko, 1962.</p><br>
+                <button class="btn-rouge" onclick="ouvrirHymne()">Lire l'Hymne National</button><br><br>
+                <button class="btn-or" onclick="startQuiz('hymne')">Faire le Quiz Hymne National</button>
+            </div>
+            <div class="card">
+                <div class="kicker">Quiz de l'Empire</div>
+                <h3>Choisis ton defi</h3>
+                <div class="grid">
+                    <button class="btn-or" onclick="startQuiz('histoire')">Histoire et Empires</button>
+                    <button class="btn-vert" onclick="startQuiz('culture')">Culture Manding</button>
+                    <button class="btn-rouge" onclick="startQuiz('fama')">FAMa et Fierte</button>
+                    <button class="btn-blanc" onclick="startQuiz('geo')">Geographie du Mali</button>
+                    <button class="btn-noir" onclick="startQuiz('hymne')">Hymne National</button>
+                    <button class="btn-vert" onclick="startQuiz('histoire')">Rejouer Histoire</button>
+                </div>
+                <div class="score-line">Meilleur score : <strong id="best">0</strong> / 10</div>
+            </div>
+        </div>
+
+        <div id="contePage" class="card hidden">
+            <div class="kicker">Conte du Griot - Version Manding</div>
+            <h2>Le Lion et le Sorcier</h2>
+            <p>La naissance de l'Empire Manding</p>
+            <div id="conteTexte"></div>
+            <p id="statusAudio" style="text-align:center;font-style:italic;font-size:14px"></p>
+            <button class="btn-griot" onclick="raconter()">Ecouter la voix du griot</button><br><br>
+            <button class="btn-noir" onclick="stopConte()">Arreter la lecture</button><br><br>
+            <button class="btn-vert" onclick="startQuiz('histoire')">Faire le quiz de l'histoire</button><br><br>
+            <button class="btn-blanc" onclick="retour()">Retour a l'accueil</button>
+        </div>
+
+        <div id="hymnePage" class="card hidden">
+            <div class="kicker">Hymne National du Mali - Le Mali</div>
+            <h2 id="hymneTitre">Pour l'Afrique et pour toi, Mali</h2>
+            <p>Choisis la langue, puis le couplet. Lecture seulement, sans voix.</p>
+            <div class="tabs">
+                <button id="btnFR" class="btn-blanc active" onclick="changerLangue('fr')">Francais - Texte</button>
+                <button id="btnBM" class="btn-blanc" onclick="changerLangue('bm')">Bambara - Texte</button>
+            </div>
+            <div class="couplets">
+                <button id="c1" class="btn-blanc active" onclick="changerCouplet(1)">Couplet 1</button>
+                <button id="c2" class="btn-blanc" onclick="changerCouplet(2)">Couplet 2</button>
+                <button id="c3" class="btn-blanc" onclick="changerCouplet(3)">Couplet 3</button>
+                <button id="c4" class="btn-blanc" onclick="changerCouplet(4)">Couplet 4</button>
+            </div>
+            <div id="hymneTexte" class="hymne-box"></div>
+            <div class="hymne-auteur">Paroles : Seydou Badian Kouyate - Musique : Banzumana Sissoko - Adopte en 1962
+            </div>
+            <br>
+            <button class="btn-or" onclick="startQuiz('hymne')">Faire le Quiz Hymne National</button><br><br>
+            <button class="btn-blanc" onclick="retour()">Retour a l'accueil</button>
+        </div>
+
+        <div id="quizPage" class="card hidden">
+            <div class="progress" id="progress"></div><br>
+            <h2 id="question"></h2><br>
+            <div id="answers"></div>
+            <p id="explication"></p>
+            <button id="nextBtn" class="btn-or hidden" onclick="nextQuestion()">Question suivante</button>
+        </div>
+
+        <div id="resultPage" class="card hidden">
+            <div class="kicker">Resultat</div>
+            <h2 id="finalMsg"></h2>
+            <p id="finalScore" style="font-size:20px;font-weight:700"></p><br>
+            <button class="btn-vert" onclick="location.reload()">Rejouer</button>
+        </div>
+    </main>
+
+    <footer><strong>MALI KURA</strong><br>Un Peuple, un But, une Foi.<br>Fait avec fierte au Mali
+    </footer>
+
+    <script>
+        const TEXTE_CONTE = `Ecoute... mon enfant... pose-toi...
+
+Il etait une fois... au pays du Mande... un temps ou le peuple avait peur de dormir.
+
+Le roi de ce temps s'appelait Soumaoro Kante... Le Roi Sorcier...
+
+On disait qu'il avait 99 pouvoirs... Il pouvait disparaitre... Il pouvait parler aux oiseaux...
+
+Quand il passait... les meres cachaient leurs enfants...
+
+Mais dans un petit village... il y avait Sogolon... La Femme Buffle... Son fils Soundjata... ne marchait pas... Jusqu'a 7 ans... il restait assis par terre...
+
+On riait... Ton fils ne sera jamais roi...
+
+Mais Sogolon savait... Elle attendait...
+
+Un jour... sa mere pleurait... Elle n'avait pas de feuilles pour la sauce... Soundjata a dit... Maman... ne pleure plus...
+
+C'est la que le destin a parle...
+
+Soundjata s'est accroche au tronc de pomme cannelle manding... Le sunsun... L'arbre sacre du Mande...
+
+Il a serre le tronc de toutes ses forces... Il a pousse sur ses jambes... Il a tremble... Il a souffle... Et il s'est LEVE...
+
+Pour la premiere fois... Soundjata a MARCHE...
+
+Tout le village a eu peur... Le lion s'etait reveille... Grace au tronc de pomme cannelle manding...`;
+
+        const HYMNE = {
+            fr: {
+                1: `A ton appel Mali\nPour ta prosperite\nFidele a ton destin\nNous serons tous unis\nUn peuple, un but, une foi\nPour une Afrique unie\nSi l'ennemi decouvre son front\nAu-dedans ou au-dehors\nDebout sur les remparts\nNous sommes resolus de mourir\n\nRefrain :\nPour l'Afrique et pour toi, Mali\nNotre drapeau sera liberte\nPour l'Afrique et pour toi, Mali\nNotre combat sera unite\nO Mali d'aujourd'hui\nO Mali de demain\nLes champs fleurissent d'esperance\nLes coeurs vibrent de confiance`,
+                2: `Debout villes et campagnes\nDebout femmes, jeunes et vieux\nPour la patrie en marche\nVers l'avenir radieux\nPour notre dignite\nRenforcons bien nos rangs\nPour le salut public\nForgeons le bien commun\nEnsemble au coude a coude\nFaisons le sentier du bonheur\n\nRefrain :\nPour l'Afrique et pour toi, Mali\nNotre drapeau sera liberte\nPour l'Afrique et pour toi, Mali\nNotre combat sera unite\nO Mali d'aujourd'hui\nO Mali de demain\nLes champs fleurissent d'esperance\nLes coeurs vibrent de confiance`,
+                3: `La voie est dure tres dure\nQui mene au bonheur commun\nCourage et devouement\nVigilance a tout moment\nVerite des temps anciens\nVerite de tous les jours\nLe bonheur par le labeur\nFera le Mali de demain\n\nRefrain :\nPour l'Afrique et pour toi, Mali\nNotre drapeau sera liberte\nPour l'Afrique et pour toi, Mali\nNotre combat sera unite\nO Mali d'aujourd'hui\nO Mali de demain\nLes champs fleurissent d'esperance\nLes coeurs vibrent de confiance`,
+                4: `L'Afrique se leve enfin\nSaluons ce jour nouveau\nSaluons la liberte\nMarchons vers l'unite\nDignite retrouvee\nSoutient notre combat\nFidele a notre serment\nDe faire l'Afrique unie\nEnsemble debout mes freres\nTous au rendez-vous de l'honneur\n\nRefrain :\nPour l'Afrique et pour toi, Mali\nNotre drapeau sera liberte\nPour l'Afrique et pour toi, Mali\nNotre combat sera unite\nO Mali d'aujourd'hui\nO Mali de demain\nLes champs fleurissent d'esperance\nLes coeurs vibrent de confiance`
+            },
+            bm: {
+                1: `Mali man'a kan bo\nNyetaa keleba don\nAn bee b'an cesiri\nKa lahidu tiime\nSo, haju, nganiya kelen\nFarafinna kelenya\nJugu man'a kun bo\nKonona wali Kenema\nBee ka wuli k'i jo\nSaya ka fisa malo ye\n\nKorosilikalan :\nFarafinna n'an faso Mali\nJonjon in ko : horonya bere\nFarafinna n'an faso Mali\nKele in ko : kelenya kele\nUn ! Mali tile be bi\nUn ! Mali tile be sini\nJigiya forow funtira kayira\nDenw hakili latigera pewu pewu`,
+                2: `Duguw ni togodaw joli\nMuso jolenw, denmisenw ni mogokorobaw\nKa nyesin faso ma min be taama na\nKa nyesin sininyesigi nyuman ma\nAn ka danbe koson\nAn ka barika don an ka jekuluw la\nForoba lakanani kama\nAn ka foroba nafa forge\nSogosogininje ni kamankunw ye nyogon fe\nAn ka taama sira kan min be taa nisondiya la\n\nKorosilikalan :\nFarafinna n'an faso Mali\nJonjon in ko : horonya bere\nFarafinna n'an faso Mali\nKele in ko : kelenya kele\nUn ! Mali tile be bi\nUn ! Mali tile be sini\nJigiya forow funtira kayira\nDenw hakili latigera pewu pewu`,
+                3: `Sira ka gelen kosebe\nO min be na ni nisondiya ye nyogon fe\nJa geleya ani yeredi\nKolosili ke waati bee\nTinye min kera waati korow la\nDon o don tinye\nNisondiya soroli baara gelen fe\nA bena Mali ke sini ta ye\n\nKorosilikalan :\nFarafinna n'an faso Mali\nJonjon in ko : horonya bere\nFarafinna n'an faso Mali\nKele in ko : kelenya kele\nUn ! Mali tile be bi\nUn ! Mali tile be sini\nJigiya forow funtira kayira\nDenw hakili latigera pewu pewu`,
+                4: `Farafinna laban be wuli\nAn ka nin don kura in fo\nFoli ke horonya la\nAn ka taama ka taa kelenya fan fe\nBonya sorola kokura\nAw ka deme don an ka kele la\nTinye don an ka kalili la\nWalasa ka Afiriki ke kelen ye\nAw ka jo nyogon fe ne balimaw\nO bee kera bonya ye\n\nKorosilikalan :\nFarafinna n'an faso Mali\nJonjon in ko : horonya bere\nFarafinna n'an faso Mali\nKele in ko : kelenya kele\nUn ! Mali tile be bi\nUn ! Mali tile be sini\nJigiya forow funtira kayira\nDenw hakili latigera pewu pewu`
+            }
+        };
+
+        let langueHymne = 'fr'; let coupletHymne = 1;
+        function afficherHymne() {
+            document.getElementById('hymneTexte').innerText = HYMNE[langueHymne][coupletHymne];
+            document.getElementById('btnFR').classList.toggle('active', langueHymne === 'fr');
+            document.getElementById('btnBM').classList.toggle('active', langueHymne === 'bm');
+            for (let i = 1; i <= 4; i++) { document.getElementById('c' + i).classList.toggle('active', coupletHymne === i); }
+            document.getElementById('hymneTitre').innerText = langueHymne === 'fr' ? "Pour l'Afrique et pour toi, Mali - Couplet " + coupletHymne : "Farafinna n'an faso Mali - Couplet " + coupletHymne;
+        }
+        function changerLangue(l) { langueHymne = l; afficherHymne(); }
+        function changerCouplet(n) { coupletHymne = n; afficherHymne(); }
+        function ouvrirHymne() { cacherTout(); document.getElementById('hymnePage').classList.remove('hidden'); afficherHymne(); window.scrollTo(0, 0); }
+
+        const quizzes = {
+            histoire: [
+                { q: "Grace a quoi Soundjata a-t-il pu marcher pour la premiere fois ?", a: ["Grace au tronc de pomme cannelle manding, le sunsun", "Grace a une voiture", "Grace a un cheval"], correct: 0, exp: "Dans la version manding, Soundjata s'est accroche au tronc de pomme cannelle manding pour se lever et marcher." },
+                { q: "Qui etait Soundjata Keita ?", a: ["Le fondateur de l'Empire du Mali, l'Enfant Lion", "Un footballeur", "Un roi de France"], correct: 0, exp: "Soundjata a battu Soumaoro a Kirina en 1235 et a fonde l'Empire du Mali." },
+                { q: "Que dit la Charte de Kurukan Fuga en 1236 ?", a: ["Plus personne ne nait esclave, l'homme est libre", "Il faut payer plus d'impots", "Le roi est seul"], correct: 0, exp: "500 ans avant la France, le Mali disait deja que l'homme est libre." }
+            ],
+            culture: [{ q: "Quel est l'instrument du griot ?", a: ["La kora", "La guitare electrique", "Le piano"], correct: 0, exp: "La kora a 21 cordes." }],
+            fama: [
+                { q: "Que veut dire FAMa ?", a: ["Forces Armees Maliennes", "Forces Amies", "Federation"], correct: 0, exp: "Les FAMa defendent l'integrite du territoire." },
+                { q: "Quelle est la devise du Mali ?", a: ["Un peuple, un but, une foi", "Liberte, egalite", "Toujours plus haut"], correct: 0, exp: "C'est la devise de l'Empire, encore aujourd'hui." }
+            ],
+            geo: [
+                { q: "Quel fleuve traverse le Mali ?", a: ["Le fleuve Niger", "Le Nil", "Le Congo"], correct: 0, exp: "Le fleuve Niger, 4200 km." },
+                { q: "Quelle ville etait le centre du savoir ?", a: ["Tombouctou", "Kayes", "Sikasso"], correct: 0, exp: "Tombouctou, Universite de Sankore." }
+            ],
+            hymne: [
+                { q: "Comment s'appelle l'hymne national du Mali ?", a: ["Pour l'Afrique et pour toi, Mali", "Le Lion du Mande", "La Marseillaise"], correct: 0, exp: "Le titre officiel est Le Mali, mais on l'appelle Pour l'Afrique et pour toi, Mali." },
+                { q: "Qui a ecrit les paroles de l'hymne ?", a: ["Seydou Badian Kouyate", "Soundjata Keita", "Kankou Moussa"], correct: 0, exp: "Paroles : Seydou Badian Kouyate. Musique : Banzumana Sissoko." },
+                { q: "Qui a compose la musique de l'hymne ?", a: ["Banzumana Sissoko", "Salif Keita", "Oumou Sangare"], correct: 0, exp: "La musique est de Banzumana Sissoko." },
+                { q: "En quelle annee l'hymne a-t-il ete adopte ?", a: ["1962", "1235", "1960"], correct: 0, exp: "Adopte par la loi du 9 aout 1962." },
+                { q: "Comment commence le 1er couplet en francais ?", a: ["A ton appel Mali", "Bonjour Mali", "Le Mali est beau"], correct: 0, exp: "1er couplet : A ton appel Mali, pour ta prosperite." },
+                { q: "Que dit le refrain ?", a: ["Pour l'Afrique et pour toi, Mali, notre drapeau sera liberte", "Pour le Mali, on va danser", "Pour l'or, on va travailler"], correct: 0, exp: "Refrain : Pour l'Afrique et pour toi, Mali, notre drapeau sera liberte." },
+                { q: "Combien de couplets a l'hymne ?", a: ["4 couplets", "2 couplets", "10 couplets"], correct: 0, exp: "L'hymne a 4 couplets complets." },
+                { q: "Comment commence le 2e couplet ?", a: ["Debout villes et campagnes", "Debout les enfants", "Le Mali se leve"], correct: 0, exp: "2e couplet : Debout villes et campagnes." },
+                { q: "Comment commence le 4e couplet ?", a: ["L'Afrique se leve enfin", "Le Mali est grand", "On va gagner"], correct: 0, exp: "4e couplet : L'Afrique se leve enfin." },
+                { q: "Comment dit-on le refrain en bambara ?", a: ["Farafinna n'an faso Mali", "Mali ka di", "An be Mali fe"], correct: 0, exp: "En bambara : Farafinna n'an faso Mali." }
+            ]
+        };
+
+        let current = [], index = 0, score = 0;
+        function cacherTout() { ['home', 'contePage', 'hymnePage', 'quizPage', 'resultPage'].forEach(id => document.getElementById(id).classList.add('hidden')) }
+        function retour() { cacherTout(); document.getElementById('home').classList.remove('hidden'); stopConte(); }
+        function ouvrirConte() { cacherTout(); document.getElementById('contePage').classList.remove('hidden'); document.getElementById('conteTexte').innerText = TEXTE_CONTE; }
+        let voix = null;
+        function preparerVoix() { const v = speechSynthesis.getVoices(); voix = v.find(x => x.lang.startsWith('fr')) || v[0]; }
+        speechSynthesis.onvoiceschanged = preparerVoix; preparerVoix();
+        function raconter() { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(TEXTE_CONTE); u.lang = 'fr-FR'; u.rate = 0.85; u.pitch = 0.7; if (voix) u.voice = voix; document.getElementById('statusAudio').innerText = "Le griot raconte..."; u.onend = () => document.getElementById('statusAudio').innerText = "Fin du conte."; speechSynthesis.speak(u); }
+        function stopConte() { speechSynthesis.cancel(); document.getElementById('statusAudio').innerText = ""; }
+        function startQuiz(cat) { current = quizzes[cat]; index = 0; score = 0; cacherTout(); document.getElementById('quizPage').classList.remove('hidden'); showQuestion(); }
+        function showQuestion() {
+            const it = current[index];
+            document.getElementById('progress').innerText = `Question ${index + 1} / ${current.length} - Score : ${score}`;
+            document.getElementById('question').innerText = it.q;
+            document.getElementById('explication').innerText = "";
+            document.getElementById('nextBtn').classList.add('hidden');
+            const box = document.getElementById('answers'); box.innerHTML = "";
+            it.a.forEach((txt, i) => {
+                const b = document.createElement('button'); b.className = 'btn-blanc'; b.innerText = txt;
+                b.onclick = () => {
+                    if (i === it.correct) { b.classList.add('correct'); score++; } else { b.classList.add('wrong'); }
+                    document.getElementById('explication').innerText = "Explication : " + it.exp;
+                    document.getElementById('nextBtn').classList.remove('hidden');
+                };
+                box.appendChild(b);
+            });
+        }
+        function nextQuestion() {
+            index++;
+            if (index >= current.length) {
+                cacherTout(); document.getElementById('resultPage').classList.remove('hidden');
+                document.getElementById('finalScore').innerText = `Tu as ${score} / ${current.length}`;
+                document.getElementById('finalMsg').innerText = score === current.length ? "Tu es un vrai heritier de l'Empire." : score >= current.length / 2 ? "Bien. Continue, le Mali compte sur toi." : "On apprend et on devient plus fort.";
+                localStorage.setItem('best', Math.max(score, localStorage.getItem('best') || 0));
+            } else showQuestion();
+        }
+        document.getElementById('best').innerText = localStorage.getItem('best') || 0;
+
+        // SYSTEME DE MISE A JOUR - FICHIER CHEF version.json
+        let nouvelleVersion = null;
+        async function verifierMiseAJour() {
+            try {
+                const reponse = await fetch('version.json?v=' + Date.now());
+                const data = await reponse.json();
+                const versionInstallee = localStorage.getItem('mali_kura_version') || 'v1';
+                if (data.version && data.version !== versionInstallee) {
+                    nouvelleVersion = data;
+                    document.getElementById('updateText').innerText = "Nouvelle version disponible : " + (data.message || data.version);
+                    document.getElementById('updateBar').style.display = 'block';
+                }
+            } catch (e) { console.log('Pas de mise a jour ou hors ligne'); }
+        }
+        function cacherUpdate() { document.getElementById('updateBar').style.display = 'none'; }
+        async function faireMiseAJour() {
+            if (!nouvelleVersion) return;
+            document.getElementById('updateText').innerText = "Mise à jour en cours...";
+            try {
+                if ('caches' in window) { const keys = await caches.keys(); for (const k of keys) { await caches.delete(k); } }
+                if ('serviceWorker' in navigator) { const regs = await navigator.serviceWorker.getRegistrations(); for (const r of regs) { await r.unregister(); } }
+                localStorage.setItem('mali_kura_version', nouvelleVersion.version);
+            } catch (e) { }
+            location.reload(true);
+        }
+        verifierMiseAJour();
+
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("sw.js").catch(err => console.log("Erreur SW :", err));
+            });
+        }
+    </script>
+</body>
+
+</html>

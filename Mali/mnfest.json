@@ -1,0 +1,37 @@
+{
+    "name": "Mali Kura - L'Empire Manding",
+    "short_name": "Mali Kura",
+    "description": "Quiz et contes de l'Empire Manding. Histoire, culture, FAMa, Hymne National et fierte du Mali.",
+    "id": "/",
+    "start_url": "index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#0A2415",
+    "theme_color": "#0A2415",
+    "lang": "fr",
+    "categories": [
+        "education",
+        "entertainment"
+    ],
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
