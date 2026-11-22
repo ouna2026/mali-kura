@@ -402,6 +402,30 @@
             margin-top: 8px;
             border: 1px solid #ccc !important
         }
+
+        /* NOUVEAU - VERIFICATION +223 */
+        .input-mali {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #C9A227;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .lien-whatsapp {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -420,7 +444,6 @@
     </header>
 
     <main>
-        <!-- BARRE DE MISE A JOUR - APPARAIT SEULEMENT SI TU AS MODIFIE version.json -->
         <div id="updateBar">
             <p id="updateText">Nouvelle version disponible</p>
             <button onclick="faireMiseAJour()">Mettre à jour maintenant</button>
@@ -444,6 +467,25 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- NOUVELLE CARTE - REJOINDRE COMMUNAUTE +223 -->
+            <div class="card">
+                <div class="kicker">Communauté WhatsApp - Mali Uniquement 🇲🇱</div>
+                <h3>Rejoindre Mali Kura</h3>
+                <p>Communauté réservée aux numéros du Mali. Entre ton numéro pour débloquer les liens.</p>
+                <input id="numero" type="tel" class="input-mali" placeholder="+223 70 00 00 00">
+                <button class="btn-vert" onclick="verifier()">Vérifier mon numéro +223</button>
+                <p id="message" style="text-align:center; font-family:Arial; font-weight:700; margin-top:12px;"></p>
+                <div id="liens" style="display:none; margin-top:12px;">
+                    <a href="https://chat.whatsapp.com/BnfJ1vsRzMQ9nG1fUljpmA" target="_blank" class="lien-whatsapp"
+                        style="background:#075E54; color:white;">💬 Rejoindre le Groupe Mali Kura</a>
+                    <a href="https://whatsapp.com/channel/0029VbESX0aHwXb4byhhr02B" target="_blank"
+                        class="lien-whatsapp" style="background:#128C7E; color:white;">📢 Suivre la Chaîne Mali Kura</a>
+                    <p style="font-size:13px; text-align:center; font-family:Arial; color:#666;">Après avoir cliqué,
+                        demande à entrer. L'admin doit approuver ton +223.</p>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="kicker">Conte du Griot</div>
                 <h3>Le Lion et le Sorcier</h3>
@@ -527,6 +569,21 @@
     </footer>
 
     <script>
+        function verifier() {
+            let num = document.getElementById("numero").value.replace(/\s/g, "");
+            let msg = document.getElementById("message");
+            let liens = document.getElementById("liens");
+            if (num.startsWith("+223") || num.startsWith("223")) {
+                msg.innerHTML = "✅ Bienvenue ! Tu es du Mali.";
+                msg.style.color = "green";
+                liens.style.display = "block";
+            } else {
+                msg.innerHTML = "❌ Désolé, communauté réservée uniquement aux numéros du Mali (+223)";
+                msg.style.color = "red";
+                liens.style.display = "none";
+            }
+        }
+
         const TEXTE_CONTE = `Ecoute... mon enfant... pose-toi...
 
 Il etait une fois... au pays du Mande... un temps ou le peuple avait peur de dormir.
@@ -649,7 +706,6 @@ Tout le village a eu peur... Le lion s'etait reveille... Grace au tronc de pomme
         }
         document.getElementById('best').innerText = localStorage.getItem('best') || 0;
 
-        // SYSTEME DE MISE A JOUR - FICHIER CHEF version.json
         let nouvelleVersion = null;
         async function verifierMiseAJour() {
             try {
